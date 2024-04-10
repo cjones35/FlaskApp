@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{% if title %}
+		<title>{{ title }} - Demo</title>
+	{% else %}
+		<title>Welcome to Demo</title>
+	{% endif %}
+</head>
+
+<body>
+<div><a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('login') }}">Login(JSON POST)</a> | <a href="{{ url_for('jsonTest') }}">JSON(GET)</a></div>
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+	<hr>
+	{% block content %}{% endblock %}
+</body>
+</html>
